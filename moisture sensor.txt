@@ -1,0 +1,9 @@
+let moistureReading = 0
+basic.forever(function () {
+    moistureReading = Math.map(pins.analogReadPin(AnalogPin.P0), 0, 750, 0, 100)
+    basic.pause(100)
+    serial.writeNumber(Math.round(moistureReading))
+    serial.redirectToUSB()
+    basic.showNumber(Math.round(moistureReading))
+    basic.clearScreen()
+})

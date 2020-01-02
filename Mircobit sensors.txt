@@ -1,0 +1,25 @@
+let Width = 0
+let Height = 0
+let moistureReading = 0
+let display1 = grove.createDisplay(DigitalPin.P4, DigitalPin.P5)
+let display2 = grove.createDisplay(DigitalPin.P6, DigitalPin.P7)
+for (let index = 0; index <= 0; index++) {
+    moistureReading = Math.map(pins.analogReadPin(AnalogPin.P0), 0, 750, 0, 100)
+    basic.pause(100)
+    serial.writeString("" + Math.round(moistureReading))
+    serial.writeString(":")
+    basic.showNumber(Math.round(moistureReading))
+    basic.clearScreen()
+    Height = grove.measureInCentimeters(DigitalPin.P1)
+    display1.show(Height)
+    basic.pause(200)
+    serial.writeString("" + Math.round(Height))
+    serial.writeString(":")
+    basic.clearScreen()
+    Width = grove.measureInCentimeters(DigitalPin.P2)
+    display2.show(Width)
+    basic.pause(200)
+    serial.writeString("" + Math.round(Width))
+    serial.writeString(":")
+    basic.clearScreen()
+}
